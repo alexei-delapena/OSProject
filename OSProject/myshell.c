@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     char arg[BUFFER_LEN] = { 0 };
 
     // Parse the commands provided using argc and argv
-
+    
     // Perform an infinite loop getting command input from users
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
     {
