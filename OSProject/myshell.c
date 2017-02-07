@@ -33,27 +33,35 @@ int main(int argc, char *argv[])
     // Perform an infinite loop getting command input from users
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
     {
+        if(buffer[strlen(buffer)-1]=='\n'){
+            buffer[strlen(buffer)-1]='\0';
+        }
+        arg[0] = '\0';
         // Perform string tokenization to get the command and argument
         char *token;
         token = strtok(buffer, " ");
         int i = 0;
-        printf(command);
         while( token != NULL ) {
 
-            strcpy(arg, " ");
             if(i==0){
                 strcpy(command, token);
                 printf("Command: %s\n", command);
 
             }
             else{
-                strcpy(arg, token);
+                strcat(arg, token);
                 printf("Arguments: %s\n", arg);
 
             }
             i++;
             token = strtok(NULL, " ");
+            if(token != NULL){
+                strcat(arg, " ");
+            } 
         }
+
+        printf("command: %s\n", command);
+        printf("arg: %s\n", arg);
 
         // Check the command and execute the operations for each command
         // cd command -- change the current directory
